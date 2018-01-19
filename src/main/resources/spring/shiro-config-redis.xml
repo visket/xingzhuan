@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd 
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+	
+	<context:property-placeholder location="classpath:resource/db.properties" ignore-unresolvable="true"/>
+
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<!-- <property name="maxTotal" value="${redis.maxActive}"></property>  
+        <property name="maxIdle" value="${redis.maxIdle}"></property>  
+        <property name="maxWaitMillis" value="${redis.maxWaitMillis}"></property>  
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"></property> -->
+	</bean>
+	
+	<bean id="redisManager" class="com.fg.cloud.framework.redis.RedisManager">
+		<constructor-arg index="0" ref="poolConfig"/>
+		<constructor-arg index="1" value="${redis.host}"/><!--Redis IP地址 -->
+	    <constructor-arg index="2" value="${redis.port}"/><!-- 端口 -->
+	    <constructor-arg index="3" value="${redis.timeout}"/><!-- 超时 -->
+	    <constructor-arg index="4" value="${redis.password}"/><!--密码 -->
+	</bean>
+	
+	<bean id="redisCacheManager" class="com.fg.cloud.framework.redis.RedisCacheManager">
+		<property name="redisManager" ref="redisManager"></property>
+	</bean>
+	
+	<!-- 自定义cacheManager -->  
+    <bean id="redisCache" class="com.fg.cloud.framework.redis.RedisCache">  
+        <constructor-arg ref="redisManager"></constructor-arg>  
+    </bean>
+    
+    <!-- session会话存储的实现类 -->  
+    <bean id="redisShiroSessionDao" class="com.fg.cloud.framework.redis.RedisSessionDao">  
+        <property name="redisManager" ref="redisManager" />  
+    </bean>
+	
+	
+	<!-- redis 的缓存 -->
+	<!-- <bean id="redisManager" class="com.fg.cloud.framework.redis.RedisManager">
+	    <property name="jedisPool" ref="jedisPool"/>
+	</bean>
+	
+	<bean id="springCacheManager" class="com.fg.cloud.framework.redis.ShiroMemcachedCache">
+	    <property name="redisManager" ref="redisManager"/>
+	</bean> -->
+	
+	<!-- <bean id="jedisShiroSessionRepository" class="com.fg.cloud.framework.redis.JedisShiroSessionRepository">
+        <property name="redisManager" ref="redisManager"></property>   
+    </bean>
+    
+    <bean id="customShiroSessionDao" class="com.fg.cloud.framework.redis.CustomShiroSessionDao">
+        <property name="shiroSessionRepository" ref="jedisShiroSessionRepository"></property>
+    </bean> -->
+	
+	<!-- <bean id="jedisShiroCacheManager" class="com.fg.cloud.framework.redis.JedisShiroCacheManager">
+        <property name="redisManager" ref="redisManager"></property>
+    </bean> -->
+	
+	<!-- <bean id="customShiroCacheManager" class="com.fg.cloud.framework.redis.CustomShiroCacheManager">
+        <property name="shrioCacheManager" ref="jedisShiroCacheManager"></property>
+    </bean> -->
+	
+</beans>

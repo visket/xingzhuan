@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedu.xingzhuan.mapper.XspcMapper">
+  <resultMap id="BaseResultMap" type="com.kedu.xingzhuan.entity.xs.XspcEntity">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="XSMC" jdbcType="VARCHAR" property="xsmc" />
+    <result column="XSLX" jdbcType="VARCHAR" property="xslx" />
+    <result column="XSSY" jdbcType="VARCHAR" property="xssy" />
+    <result column="GZYQ" jdbcType="VARCHAR" property="gzyq" />
+    <result column="CJSJ" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="FBSJ" jdbcType="TIMESTAMP" property="fbsj" />
+    <result column="HBSJ" jdbcType="TIMESTAMP" property="hbsj" />
+    <result column="FJ" jdbcType="VARCHAR" property="fj" />
+    <result column="YXJ" jdbcType="NUMERIC" property="yxj" />
+    <result column="SFSC" jdbcType="NUMERIC" property="sfsc" />
+    <result column="CJR" jdbcType="VARCHAR" property="cjr" />
+    <result column="XGR" jdbcType="VARCHAR" property="xgr" />
+    <result column="XGSJ" jdbcType="TIMESTAMP" property="xgsj" />
+    <result column="XSNR" jdbcType="VARCHAR" property="xsnr" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, XSMC, XSLX, XSSY, GZYQ, CJSJ, FBSJ, HBSJ, FJ, YXJ, SFSC, CJR, XGR, XGSJ, XSNR
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from XS_XSPC
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from XS_XSPC
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.kedu.xingzhuan.entity.xs.XspcEntity" useGeneratedKeys="true">
+    insert into XS_XSPC (XSMC, XSLX, XSSY, 
+      GZYQ, CJSJ, FBSJ, 
+      HBSJ, FJ, YXJ, SFSC, 
+      CJR, XGR, XGSJ, XSNR
+      )
+    values (#{xsmc,jdbcType=VARCHAR}, #{xslx,jdbcType=VARCHAR}, #{xssy,jdbcType=VARCHAR}, 
+      #{gzyq,jdbcType=VARCHAR}, #{cjsj,jdbcType=TIMESTAMP}, #{fbsj,jdbcType=TIMESTAMP}, 
+      #{hbsj,jdbcType=TIMESTAMP}, #{fj,jdbcType=VARCHAR}, #{yxj,jdbcType=NUMERIC}, #{sfsc,jdbcType=NUMERIC}, 
+      #{cjr,jdbcType=VARCHAR}, #{xgr,jdbcType=VARCHAR}, #{xgsj,jdbcType=TIMESTAMP}, #{xsnr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.kedu.xingzhuan.entity.xs.XspcEntity" useGeneratedKeys="true">
+    insert into XS_XSPC
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xsmc != null">
+        XSMC,
+      </if>
+      <if test="xslx != null">
+        XSLX,
+      </if>
+      <if test="xssy != null">
+        XSSY,
+      </if>
+      <if test="gzyq != null">
+        GZYQ,
+      </if>
+      <if test="cjsj != null">
+        CJSJ,
+      </if>
+      <if test="fbsj != null">
+        FBSJ,
+      </if>
+      <if test="hbsj != null">
+        HBSJ,
+      </if>
+      <if test="fj != null">
+        FJ,
+      </if>
+      <if test="yxj != null">
+        YXJ,
+      </if>
+      <if test="sfsc != null">
+        SFSC,
+      </if>
+      <if test="cjr != null">
+        CJR,
+      </if>
+      <if test="xgr != null">
+        XGR,
+      </if>
+      <if test="xgsj != null">
+        XGSJ,
+      </if>
+      <if test="xsnr != null">
+        XSNR,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xsmc != null">
+        #{xsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xslx != null">
+        #{xslx,jdbcType=VARCHAR},
+      </if>
+      <if test="xssy != null">
+        #{xssy,jdbcType=VARCHAR},
+      </if>
+      <if test="gzyq != null">
+        #{gzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null">
+        #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fbsj != null">
+        #{fbsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hbsj != null">
+        #{hbsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fj != null">
+        #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="yxj != null">
+        #{yxj,jdbcType=NUMERIC},
+      </if>
+      <if test="sfsc != null">
+        #{sfsc,jdbcType=NUMERIC},
+      </if>
+      <if test="cjr != null">
+        #{cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgr != null">
+        #{xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null">
+        #{xgsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xsnr != null">
+        #{xsnr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kedu.xingzhuan.entity.xs.XspcEntity">
+    update XS_XSPC
+    <set>
+      <if test="xsmc != null">
+        XSMC = #{xsmc,jdbcType=VARCHAR},
+      </if>
+      <if test="xslx != null">
+        XSLX = #{xslx,jdbcType=VARCHAR},
+      </if>
+      <if test="xssy != null">
+        XSSY = #{xssy,jdbcType=VARCHAR},
+      </if>
+      <if test="gzyq != null">
+        GZYQ = #{gzyq,jdbcType=VARCHAR},
+      </if>
+      <if test="cjsj != null">
+        CJSJ = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fbsj != null">
+        FBSJ = #{fbsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hbsj != null">
+        HBSJ = #{hbsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fj != null">
+        FJ = #{fj,jdbcType=VARCHAR},
+      </if>
+      <if test="yxj != null">
+        YXJ = #{yxj,jdbcType=NUMERIC},
+      </if>
+      <if test="sfsc != null">
+        SFSC = #{sfsc,jdbcType=NUMERIC},
+      </if>
+      <if test="cjr != null">
+        CJR = #{cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgr != null">
+        XGR = #{xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null">
+        XGSJ = #{xgsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xsnr != null">
+        XSNR = #{xsnr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kedu.xingzhuan.entity.xs.XspcEntity">
+    update XS_XSPC
+    set XSMC = #{xsmc,jdbcType=VARCHAR},
+      XSLX = #{xslx,jdbcType=VARCHAR},
+      XSSY = #{xssy,jdbcType=VARCHAR},
+      GZYQ = #{gzyq,jdbcType=VARCHAR},
+      CJSJ = #{cjsj,jdbcType=TIMESTAMP},
+      FBSJ = #{fbsj,jdbcType=TIMESTAMP},
+      HBSJ = #{hbsj,jdbcType=TIMESTAMP},
+      FJ = #{fj,jdbcType=VARCHAR},
+      YXJ = #{yxj,jdbcType=NUMERIC},
+      SFSC = #{sfsc,jdbcType=NUMERIC},
+      CJR = #{cjr,jdbcType=VARCHAR},
+      XGR = #{xgr,jdbcType=VARCHAR},
+      XGSJ = #{xgsj,jdbcType=TIMESTAMP},
+      XSNR = #{xsnr,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

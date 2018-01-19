@@ -1,0 +1,684 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kedu.xingzhuan.mapper.XsmxMapper">
+  <resultMap id="BaseResultMap" type="com.kedu.xingzhuan.entity.xs.XsmxEntity">
+    <id column="ID" jdbcType="VARCHAR" property="id" />
+    <result column="XSPC_ID" jdbcType="VARCHAR" property="xspcId" />
+    <result column="XSMB" jdbcType="NUMERIC" property="xsmb" />
+    <result column="XSLX" jdbcType="VARCHAR" property="xslx" />
+    <result column="QZDYXX" jdbcType="VARCHAR" property="qzdyxx" />
+    <result column="XSJB" jdbcType="VARCHAR" property="xsjb" />
+    <result column="XH_ID" jdbcType="VARCHAR" property="xhId" />
+    <result column="LYD" jdbcType="VARCHAR" property="lyd" />
+    <result column="JY_ID" jdbcType="VARCHAR" property="jyId" />
+    <result column="WBJY_ID" jdbcType="VARCHAR" property="wbjyId" />
+    <result column="JYZT" jdbcType="VARCHAR" property="jyzt" />
+    <result column="JYRQ" jdbcType="TIMESTAMP" property="jyrq" />
+    <result column="HZHB_ID" jdbcType="VARCHAR" property="hzhbId" />
+    <result column="JYLX" jdbcType="VARCHAR" property="jylx" />
+    <result column="JYJE" jdbcType="VARCHAR" property="jyje" />
+    <result column="SPMC" jdbcType="VARCHAR" property="spmc" />
+    <result column="SKSJ" jdbcType="TIMESTAMP" property="sksj" />
+    <result column="CJSJ" jdbcType="TIMESTAMP" property="cjsj" />
+    <result column="ZHXGSJ" jdbcType="TIMESTAMP" property="zhxgsj" />
+    <result column="DYDCXSJ" jdbcType="VARCHAR" property="dydcxsj" />
+    <result column="GXZZ" jdbcType="VARCHAR" property="gxzz" />
+    <result column="XSSJ" jdbcType="TIMESTAMP" property="xssj" />
+    <result column="XSNR" jdbcType="VARCHAR" property="xsnr" />
+    <result column="GLAJ" jdbcType="VARCHAR" property="glaj" />
+    <result column="LDRYQK" jdbcType="VARCHAR" property="ldryqk" />
+    <result column="HCJD" jdbcType="VARCHAR" property="hcjd" />
+    <result column="HCQK" jdbcType="VARCHAR" property="hcqk" />
+    <result column="XS_XSQZDY_ID" jdbcType="VARCHAR" property="xsXsqzdyId" />
+    <result column="CLJG" jdbcType="VARCHAR" property="cljg" />
+    <result column="BJ" jdbcType="VARCHAR" property="bj" />
+    <result column="MJ_ID" jdbcType="VARCHAR" property="mjId" />
+    <result column="MJ_ZH" jdbcType="VARCHAR" property="mjZh" />
+    <result column="MJ_NC" jdbcType="VARCHAR" property="mjNc" />
+    <result column="MJ_QQ_DL_IP" jdbcType="VARCHAR" property="mjQqDlIp" />
+    <result column="MJ_QQ_DL_SS" jdbcType="VARCHAR" property="mjQqDlSs" />
+    <result column="MJYH_ID" jdbcType="VARCHAR" property="mjyhId" />
+    <result column="MJZH" jdbcType="VARCHAR" property="mjzh" />
+    <result column="MJNC" jdbcType="VARCHAR" property="mjnc" />
+    <result column="MJQQDLIP" jdbcType="VARCHAR" property="mjqqdlip" />
+    <result column="MJQQDLSS" jdbcType="VARCHAR" property="mjqqdlss" />
+    <result column="WLGS" jdbcType="VARCHAR" property="wlgs" />
+    <result column="WL_ID" jdbcType="VARCHAR" property="wlId" />
+    <result column="SJDWLGS" jdbcType="VARCHAR" property="sjdwlgs" />
+    <result column="JJR" jdbcType="VARCHAR" property="jjr" />
+    <result column="JJR_CELL" jdbcType="NUMERIC" property="jjrCell" />
+    <result column="SJR" jdbcType="VARCHAR" property="sjr" />
+    <result column="SJR_CELL" jdbcType="NUMERIC" property="sjrCell" />
+    <result column="FHSJ" jdbcType="TIMESTAMP" property="fhsj" />
+    <result column="JJDZ" jdbcType="VARCHAR" property="jjdz" />
+    <result column="SHDZ" jdbcType="VARCHAR" property="shdz" />
+    <result column="PROVINCE" jdbcType="VARCHAR" property="province" />
+    <result column="CITY" jdbcType="VARCHAR" property="city" />
+    <result column="AREA" jdbcType="VARCHAR" property="area" />
+    <result column="CJR" jdbcType="VARCHAR" property="cjr" />
+    <result column="XGR" jdbcType="VARCHAR" property="xgr" />
+    <result column="XGSJ" jdbcType="TIMESTAMP" property="xgsj" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, XSPC_ID, XSMB, XSLX, QZDYXX, XSJB, XH_ID, LYD, JY_ID, WBJY_ID, JYZT, JYRQ, HZHB_ID, 
+    JYLX, JYJE, SPMC, SKSJ, CJSJ, ZHXGSJ, DYDCXSJ, GXZZ, XSSJ, XSNR, GLAJ, LDRYQK, HCJD, 
+    HCQK, XS_XSQZDY_ID, CLJG, BJ, MJ_ID, MJ_ZH, MJ_NC, MJ_QQ_DL_IP, MJ_QQ_DL_SS, MJYH_ID, 
+    MJZH, MJNC, MJQQDLIP, MJQQDLSS, WLGS, WL_ID, SJDWLGS, JJR, JJR_CELL, SJR, SJR_CELL, 
+    FHSJ, JJDZ, SHDZ, PROVINCE, CITY, AREA, CJR, XGR, XGSJ
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from XS_XSMX
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from XS_XSMX
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" keyColumn="ID" keyProperty="id" parameterType="com.kedu.xingzhuan.entity.xs.XsmxEntity" useGeneratedKeys="true">
+    insert into XS_XSMX (XSPC_ID, XSMB, XSLX, 
+      QZDYXX, XSJB, XH_ID, 
+      LYD, JY_ID, WBJY_ID, 
+      JYZT, JYRQ, HZHB_ID, 
+      JYLX, JYJE, SPMC, SKSJ, 
+      CJSJ, ZHXGSJ, DYDCXSJ, 
+      GXZZ, XSSJ, XSNR, 
+      GLAJ, LDRYQK, HCJD, 
+      HCQK, XS_XSQZDY_ID, CLJG, 
+      BJ, MJ_ID, MJ_ZH, MJ_NC, 
+      MJ_QQ_DL_IP, MJ_QQ_DL_SS, MJYH_ID, 
+      MJZH, MJNC, MJQQDLIP, 
+      MJQQDLSS, WLGS, WL_ID, 
+      SJDWLGS, JJR, JJR_CELL, 
+      SJR, SJR_CELL, FHSJ, 
+      JJDZ, SHDZ, PROVINCE, 
+      CITY, AREA, CJR, XGR, 
+      XGSJ)
+    values (#{xspcId,jdbcType=VARCHAR}, #{xsmb,jdbcType=NUMERIC}, #{xslx,jdbcType=VARCHAR}, 
+      #{qzdyxx,jdbcType=VARCHAR}, #{xsjb,jdbcType=VARCHAR}, #{xhId,jdbcType=VARCHAR}, 
+      #{lyd,jdbcType=VARCHAR}, #{jyId,jdbcType=VARCHAR}, #{wbjyId,jdbcType=VARCHAR}, 
+      #{jyzt,jdbcType=VARCHAR}, #{jyrq,jdbcType=TIMESTAMP}, #{hzhbId,jdbcType=VARCHAR}, 
+      #{jylx,jdbcType=VARCHAR}, #{jyje,jdbcType=VARCHAR}, #{spmc,jdbcType=VARCHAR}, #{sksj,jdbcType=TIMESTAMP}, 
+      #{cjsj,jdbcType=TIMESTAMP}, #{zhxgsj,jdbcType=TIMESTAMP}, #{dydcxsj,jdbcType=VARCHAR}, 
+      #{gxzz,jdbcType=VARCHAR}, #{xssj,jdbcType=TIMESTAMP}, #{xsnr,jdbcType=VARCHAR}, 
+      #{glaj,jdbcType=VARCHAR}, #{ldryqk,jdbcType=VARCHAR}, #{hcjd,jdbcType=VARCHAR}, 
+      #{hcqk,jdbcType=VARCHAR}, #{xsXsqzdyId,jdbcType=VARCHAR}, #{cljg,jdbcType=VARCHAR}, 
+      #{bj,jdbcType=VARCHAR}, #{mjId,jdbcType=VARCHAR}, #{mjZh,jdbcType=VARCHAR}, #{mjNc,jdbcType=VARCHAR}, 
+      #{mjQqDlIp,jdbcType=VARCHAR}, #{mjQqDlSs,jdbcType=VARCHAR}, #{mjyhId,jdbcType=VARCHAR}, 
+      #{mjzh,jdbcType=VARCHAR}, #{mjnc,jdbcType=VARCHAR}, #{mjqqdlip,jdbcType=VARCHAR}, 
+      #{mjqqdlss,jdbcType=VARCHAR}, #{wlgs,jdbcType=VARCHAR}, #{wlId,jdbcType=VARCHAR}, 
+      #{sjdwlgs,jdbcType=VARCHAR}, #{jjr,jdbcType=VARCHAR}, #{jjrCell,jdbcType=NUMERIC}, 
+      #{sjr,jdbcType=VARCHAR}, #{sjrCell,jdbcType=NUMERIC}, #{fhsj,jdbcType=TIMESTAMP}, 
+      #{jjdz,jdbcType=VARCHAR}, #{shdz,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{cjr,jdbcType=VARCHAR}, #{xgr,jdbcType=VARCHAR}, 
+      #{xgsj,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="ID" keyProperty="id" parameterType="com.kedu.xingzhuan.entity.xs.XsmxEntity" useGeneratedKeys="true">
+    insert into XS_XSMX
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="xspcId != null">
+        XSPC_ID,
+      </if>
+      <if test="xsmb != null">
+        XSMB,
+      </if>
+      <if test="xslx != null">
+        XSLX,
+      </if>
+      <if test="qzdyxx != null">
+        QZDYXX,
+      </if>
+      <if test="xsjb != null">
+        XSJB,
+      </if>
+      <if test="xhId != null">
+        XH_ID,
+      </if>
+      <if test="lyd != null">
+        LYD,
+      </if>
+      <if test="jyId != null">
+        JY_ID,
+      </if>
+      <if test="wbjyId != null">
+        WBJY_ID,
+      </if>
+      <if test="jyzt != null">
+        JYZT,
+      </if>
+      <if test="jyrq != null">
+        JYRQ,
+      </if>
+      <if test="hzhbId != null">
+        HZHB_ID,
+      </if>
+      <if test="jylx != null">
+        JYLX,
+      </if>
+      <if test="jyje != null">
+        JYJE,
+      </if>
+      <if test="spmc != null">
+        SPMC,
+      </if>
+      <if test="sksj != null">
+        SKSJ,
+      </if>
+      <if test="cjsj != null">
+        CJSJ,
+      </if>
+      <if test="zhxgsj != null">
+        ZHXGSJ,
+      </if>
+      <if test="dydcxsj != null">
+        DYDCXSJ,
+      </if>
+      <if test="gxzz != null">
+        GXZZ,
+      </if>
+      <if test="xssj != null">
+        XSSJ,
+      </if>
+      <if test="xsnr != null">
+        XSNR,
+      </if>
+      <if test="glaj != null">
+        GLAJ,
+      </if>
+      <if test="ldryqk != null">
+        LDRYQK,
+      </if>
+      <if test="hcjd != null">
+        HCJD,
+      </if>
+      <if test="hcqk != null">
+        HCQK,
+      </if>
+      <if test="xsXsqzdyId != null">
+        XS_XSQZDY_ID,
+      </if>
+      <if test="cljg != null">
+        CLJG,
+      </if>
+      <if test="bj != null">
+        BJ,
+      </if>
+      <if test="mjId != null">
+        MJ_ID,
+      </if>
+      <if test="mjZh != null">
+        MJ_ZH,
+      </if>
+      <if test="mjNc != null">
+        MJ_NC,
+      </if>
+      <if test="mjQqDlIp != null">
+        MJ_QQ_DL_IP,
+      </if>
+      <if test="mjQqDlSs != null">
+        MJ_QQ_DL_SS,
+      </if>
+      <if test="mjyhId != null">
+        MJYH_ID,
+      </if>
+      <if test="mjzh != null">
+        MJZH,
+      </if>
+      <if test="mjnc != null">
+        MJNC,
+      </if>
+      <if test="mjqqdlip != null">
+        MJQQDLIP,
+      </if>
+      <if test="mjqqdlss != null">
+        MJQQDLSS,
+      </if>
+      <if test="wlgs != null">
+        WLGS,
+      </if>
+      <if test="wlId != null">
+        WL_ID,
+      </if>
+      <if test="sjdwlgs != null">
+        SJDWLGS,
+      </if>
+      <if test="jjr != null">
+        JJR,
+      </if>
+      <if test="jjrCell != null">
+        JJR_CELL,
+      </if>
+      <if test="sjr != null">
+        SJR,
+      </if>
+      <if test="sjrCell != null">
+        SJR_CELL,
+      </if>
+      <if test="fhsj != null">
+        FHSJ,
+      </if>
+      <if test="jjdz != null">
+        JJDZ,
+      </if>
+      <if test="shdz != null">
+        SHDZ,
+      </if>
+      <if test="province != null">
+        PROVINCE,
+      </if>
+      <if test="city != null">
+        CITY,
+      </if>
+      <if test="area != null">
+        AREA,
+      </if>
+      <if test="cjr != null">
+        CJR,
+      </if>
+      <if test="xgr != null">
+        XGR,
+      </if>
+      <if test="xgsj != null">
+        XGSJ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="xspcId != null">
+        #{xspcId,jdbcType=VARCHAR},
+      </if>
+      <if test="xsmb != null">
+        #{xsmb,jdbcType=NUMERIC},
+      </if>
+      <if test="xslx != null">
+        #{xslx,jdbcType=VARCHAR},
+      </if>
+      <if test="qzdyxx != null">
+        #{qzdyxx,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjb != null">
+        #{xsjb,jdbcType=VARCHAR},
+      </if>
+      <if test="xhId != null">
+        #{xhId,jdbcType=VARCHAR},
+      </if>
+      <if test="lyd != null">
+        #{lyd,jdbcType=VARCHAR},
+      </if>
+      <if test="jyId != null">
+        #{jyId,jdbcType=VARCHAR},
+      </if>
+      <if test="wbjyId != null">
+        #{wbjyId,jdbcType=VARCHAR},
+      </if>
+      <if test="jyzt != null">
+        #{jyzt,jdbcType=VARCHAR},
+      </if>
+      <if test="jyrq != null">
+        #{jyrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hzhbId != null">
+        #{hzhbId,jdbcType=VARCHAR},
+      </if>
+      <if test="jylx != null">
+        #{jylx,jdbcType=VARCHAR},
+      </if>
+      <if test="jyje != null">
+        #{jyje,jdbcType=VARCHAR},
+      </if>
+      <if test="spmc != null">
+        #{spmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sksj != null">
+        #{sksj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cjsj != null">
+        #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zhxgsj != null">
+        #{zhxgsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dydcxsj != null">
+        #{dydcxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxzz != null">
+        #{gxzz,jdbcType=VARCHAR},
+      </if>
+      <if test="xssj != null">
+        #{xssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xsnr != null">
+        #{xsnr,jdbcType=VARCHAR},
+      </if>
+      <if test="glaj != null">
+        #{glaj,jdbcType=VARCHAR},
+      </if>
+      <if test="ldryqk != null">
+        #{ldryqk,jdbcType=VARCHAR},
+      </if>
+      <if test="hcjd != null">
+        #{hcjd,jdbcType=VARCHAR},
+      </if>
+      <if test="hcqk != null">
+        #{hcqk,jdbcType=VARCHAR},
+      </if>
+      <if test="xsXsqzdyId != null">
+        #{xsXsqzdyId,jdbcType=VARCHAR},
+      </if>
+      <if test="cljg != null">
+        #{cljg,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null">
+        #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="mjId != null">
+        #{mjId,jdbcType=VARCHAR},
+      </if>
+      <if test="mjZh != null">
+        #{mjZh,jdbcType=VARCHAR},
+      </if>
+      <if test="mjNc != null">
+        #{mjNc,jdbcType=VARCHAR},
+      </if>
+      <if test="mjQqDlIp != null">
+        #{mjQqDlIp,jdbcType=VARCHAR},
+      </if>
+      <if test="mjQqDlSs != null">
+        #{mjQqDlSs,jdbcType=VARCHAR},
+      </if>
+      <if test="mjyhId != null">
+        #{mjyhId,jdbcType=VARCHAR},
+      </if>
+      <if test="mjzh != null">
+        #{mjzh,jdbcType=VARCHAR},
+      </if>
+      <if test="mjnc != null">
+        #{mjnc,jdbcType=VARCHAR},
+      </if>
+      <if test="mjqqdlip != null">
+        #{mjqqdlip,jdbcType=VARCHAR},
+      </if>
+      <if test="mjqqdlss != null">
+        #{mjqqdlss,jdbcType=VARCHAR},
+      </if>
+      <if test="wlgs != null">
+        #{wlgs,jdbcType=VARCHAR},
+      </if>
+      <if test="wlId != null">
+        #{wlId,jdbcType=VARCHAR},
+      </if>
+      <if test="sjdwlgs != null">
+        #{sjdwlgs,jdbcType=VARCHAR},
+      </if>
+      <if test="jjr != null">
+        #{jjr,jdbcType=VARCHAR},
+      </if>
+      <if test="jjrCell != null">
+        #{jjrCell,jdbcType=NUMERIC},
+      </if>
+      <if test="sjr != null">
+        #{sjr,jdbcType=VARCHAR},
+      </if>
+      <if test="sjrCell != null">
+        #{sjrCell,jdbcType=NUMERIC},
+      </if>
+      <if test="fhsj != null">
+        #{fhsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jjdz != null">
+        #{jjdz,jdbcType=VARCHAR},
+      </if>
+      <if test="shdz != null">
+        #{shdz,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="cjr != null">
+        #{cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgr != null">
+        #{xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null">
+        #{xgsj,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kedu.xingzhuan.entity.xs.XsmxEntity">
+    update XS_XSMX
+    <set>
+      <if test="xspcId != null">
+        XSPC_ID = #{xspcId,jdbcType=VARCHAR},
+      </if>
+      <if test="xsmb != null">
+        XSMB = #{xsmb,jdbcType=NUMERIC},
+      </if>
+      <if test="xslx != null">
+        XSLX = #{xslx,jdbcType=VARCHAR},
+      </if>
+      <if test="qzdyxx != null">
+        QZDYXX = #{qzdyxx,jdbcType=VARCHAR},
+      </if>
+      <if test="xsjb != null">
+        XSJB = #{xsjb,jdbcType=VARCHAR},
+      </if>
+      <if test="xhId != null">
+        XH_ID = #{xhId,jdbcType=VARCHAR},
+      </if>
+      <if test="lyd != null">
+        LYD = #{lyd,jdbcType=VARCHAR},
+      </if>
+      <if test="jyId != null">
+        JY_ID = #{jyId,jdbcType=VARCHAR},
+      </if>
+      <if test="wbjyId != null">
+        WBJY_ID = #{wbjyId,jdbcType=VARCHAR},
+      </if>
+      <if test="jyzt != null">
+        JYZT = #{jyzt,jdbcType=VARCHAR},
+      </if>
+      <if test="jyrq != null">
+        JYRQ = #{jyrq,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hzhbId != null">
+        HZHB_ID = #{hzhbId,jdbcType=VARCHAR},
+      </if>
+      <if test="jylx != null">
+        JYLX = #{jylx,jdbcType=VARCHAR},
+      </if>
+      <if test="jyje != null">
+        JYJE = #{jyje,jdbcType=VARCHAR},
+      </if>
+      <if test="spmc != null">
+        SPMC = #{spmc,jdbcType=VARCHAR},
+      </if>
+      <if test="sksj != null">
+        SKSJ = #{sksj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cjsj != null">
+        CJSJ = #{cjsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zhxgsj != null">
+        ZHXGSJ = #{zhxgsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dydcxsj != null">
+        DYDCXSJ = #{dydcxsj,jdbcType=VARCHAR},
+      </if>
+      <if test="gxzz != null">
+        GXZZ = #{gxzz,jdbcType=VARCHAR},
+      </if>
+      <if test="xssj != null">
+        XSSJ = #{xssj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="xsnr != null">
+        XSNR = #{xsnr,jdbcType=VARCHAR},
+      </if>
+      <if test="glaj != null">
+        GLAJ = #{glaj,jdbcType=VARCHAR},
+      </if>
+      <if test="ldryqk != null">
+        LDRYQK = #{ldryqk,jdbcType=VARCHAR},
+      </if>
+      <if test="hcjd != null">
+        HCJD = #{hcjd,jdbcType=VARCHAR},
+      </if>
+      <if test="hcqk != null">
+        HCQK = #{hcqk,jdbcType=VARCHAR},
+      </if>
+      <if test="xsXsqzdyId != null">
+        XS_XSQZDY_ID = #{xsXsqzdyId,jdbcType=VARCHAR},
+      </if>
+      <if test="cljg != null">
+        CLJG = #{cljg,jdbcType=VARCHAR},
+      </if>
+      <if test="bj != null">
+        BJ = #{bj,jdbcType=VARCHAR},
+      </if>
+      <if test="mjId != null">
+        MJ_ID = #{mjId,jdbcType=VARCHAR},
+      </if>
+      <if test="mjZh != null">
+        MJ_ZH = #{mjZh,jdbcType=VARCHAR},
+      </if>
+      <if test="mjNc != null">
+        MJ_NC = #{mjNc,jdbcType=VARCHAR},
+      </if>
+      <if test="mjQqDlIp != null">
+        MJ_QQ_DL_IP = #{mjQqDlIp,jdbcType=VARCHAR},
+      </if>
+      <if test="mjQqDlSs != null">
+        MJ_QQ_DL_SS = #{mjQqDlSs,jdbcType=VARCHAR},
+      </if>
+      <if test="mjyhId != null">
+        MJYH_ID = #{mjyhId,jdbcType=VARCHAR},
+      </if>
+      <if test="mjzh != null">
+        MJZH = #{mjzh,jdbcType=VARCHAR},
+      </if>
+      <if test="mjnc != null">
+        MJNC = #{mjnc,jdbcType=VARCHAR},
+      </if>
+      <if test="mjqqdlip != null">
+        MJQQDLIP = #{mjqqdlip,jdbcType=VARCHAR},
+      </if>
+      <if test="mjqqdlss != null">
+        MJQQDLSS = #{mjqqdlss,jdbcType=VARCHAR},
+      </if>
+      <if test="wlgs != null">
+        WLGS = #{wlgs,jdbcType=VARCHAR},
+      </if>
+      <if test="wlId != null">
+        WL_ID = #{wlId,jdbcType=VARCHAR},
+      </if>
+      <if test="sjdwlgs != null">
+        SJDWLGS = #{sjdwlgs,jdbcType=VARCHAR},
+      </if>
+      <if test="jjr != null">
+        JJR = #{jjr,jdbcType=VARCHAR},
+      </if>
+      <if test="jjrCell != null">
+        JJR_CELL = #{jjrCell,jdbcType=NUMERIC},
+      </if>
+      <if test="sjr != null">
+        SJR = #{sjr,jdbcType=VARCHAR},
+      </if>
+      <if test="sjrCell != null">
+        SJR_CELL = #{sjrCell,jdbcType=NUMERIC},
+      </if>
+      <if test="fhsj != null">
+        FHSJ = #{fhsj,jdbcType=TIMESTAMP},
+      </if>
+      <if test="jjdz != null">
+        JJDZ = #{jjdz,jdbcType=VARCHAR},
+      </if>
+      <if test="shdz != null">
+        SHDZ = #{shdz,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        PROVINCE = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        CITY = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="area != null">
+        AREA = #{area,jdbcType=VARCHAR},
+      </if>
+      <if test="cjr != null">
+        CJR = #{cjr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgr != null">
+        XGR = #{xgr,jdbcType=VARCHAR},
+      </if>
+      <if test="xgsj != null">
+        XGSJ = #{xgsj,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kedu.xingzhuan.entity.xs.XsmxEntity">
+    update XS_XSMX
+    set XSPC_ID = #{xspcId,jdbcType=VARCHAR},
+      XSMB = #{xsmb,jdbcType=NUMERIC},
+      XSLX = #{xslx,jdbcType=VARCHAR},
+      QZDYXX = #{qzdyxx,jdbcType=VARCHAR},
+      XSJB = #{xsjb,jdbcType=VARCHAR},
+      XH_ID = #{xhId,jdbcType=VARCHAR},
+      LYD = #{lyd,jdbcType=VARCHAR},
+      JY_ID = #{jyId,jdbcType=VARCHAR},
+      WBJY_ID = #{wbjyId,jdbcType=VARCHAR},
+      JYZT = #{jyzt,jdbcType=VARCHAR},
+      JYRQ = #{jyrq,jdbcType=TIMESTAMP},
+      HZHB_ID = #{hzhbId,jdbcType=VARCHAR},
+      JYLX = #{jylx,jdbcType=VARCHAR},
+      JYJE = #{jyje,jdbcType=VARCHAR},
+      SPMC = #{spmc,jdbcType=VARCHAR},
+      SKSJ = #{sksj,jdbcType=TIMESTAMP},
+      CJSJ = #{cjsj,jdbcType=TIMESTAMP},
+      ZHXGSJ = #{zhxgsj,jdbcType=TIMESTAMP},
+      DYDCXSJ = #{dydcxsj,jdbcType=VARCHAR},
+      GXZZ = #{gxzz,jdbcType=VARCHAR},
+      XSSJ = #{xssj,jdbcType=TIMESTAMP},
+      XSNR = #{xsnr,jdbcType=VARCHAR},
+      GLAJ = #{glaj,jdbcType=VARCHAR},
+      LDRYQK = #{ldryqk,jdbcType=VARCHAR},
+      HCJD = #{hcjd,jdbcType=VARCHAR},
+      HCQK = #{hcqk,jdbcType=VARCHAR},
+      XS_XSQZDY_ID = #{xsXsqzdyId,jdbcType=VARCHAR},
+      CLJG = #{cljg,jdbcType=VARCHAR},
+      BJ = #{bj,jdbcType=VARCHAR},
+      MJ_ID = #{mjId,jdbcType=VARCHAR},
+      MJ_ZH = #{mjZh,jdbcType=VARCHAR},
+      MJ_NC = #{mjNc,jdbcType=VARCHAR},
+      MJ_QQ_DL_IP = #{mjQqDlIp,jdbcType=VARCHAR},
+      MJ_QQ_DL_SS = #{mjQqDlSs,jdbcType=VARCHAR},
+      MJYH_ID = #{mjyhId,jdbcType=VARCHAR},
+      MJZH = #{mjzh,jdbcType=VARCHAR},
+      MJNC = #{mjnc,jdbcType=VARCHAR},
+      MJQQDLIP = #{mjqqdlip,jdbcType=VARCHAR},
+      MJQQDLSS = #{mjqqdlss,jdbcType=VARCHAR},
+      WLGS = #{wlgs,jdbcType=VARCHAR},
+      WL_ID = #{wlId,jdbcType=VARCHAR},
+      SJDWLGS = #{sjdwlgs,jdbcType=VARCHAR},
+      JJR = #{jjr,jdbcType=VARCHAR},
+      JJR_CELL = #{jjrCell,jdbcType=NUMERIC},
+      SJR = #{sjr,jdbcType=VARCHAR},
+      SJR_CELL = #{sjrCell,jdbcType=NUMERIC},
+      FHSJ = #{fhsj,jdbcType=TIMESTAMP},
+      JJDZ = #{jjdz,jdbcType=VARCHAR},
+      SHDZ = #{shdz,jdbcType=VARCHAR},
+      PROVINCE = #{province,jdbcType=VARCHAR},
+      CITY = #{city,jdbcType=VARCHAR},
+      AREA = #{area,jdbcType=VARCHAR},
+      CJR = #{cjr,jdbcType=VARCHAR},
+      XGR = #{xgr,jdbcType=VARCHAR},
+      XGSJ = #{xgsj,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>
